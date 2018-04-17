@@ -5,11 +5,11 @@ Perform replacements (plain and regular expression) in the contents loaded by th
 ## Install:
 
 ```bash
-$ npm install --save-dev string-replace-loader
+$ npm install --save-dev vdev-string-replace-loader
 ```
 
 With release of 2.0.0 the loader is expected to be used in Node v4+ environment.
-Support for Node v3 and lower was dropped, but you can install and use the loader version of 1.3.0 in older environments. 
+Support for Node v3 and lower was dropped, but you can install and use the loader version of 1.3.0 in older environments.
 
 ## Usage:
 
@@ -33,6 +33,7 @@ module.exports = {
         options: {
           search: '$',
           replace: 'window.jQuery',
+          ctxPath: path.resolve(__dirname, 'src')
         }
       }
     ]
@@ -81,7 +82,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        loader: 'string-replace-loader',
+        loader: 'vdev-string-replace-loader',
         options: {
           multiple: [
              { search: 'jQuery', replace: 'window.$' },
@@ -108,7 +109,7 @@ module.exports = {
     rules: [
       {
         test: /fileInWhichJQueryIsUndefined\.js$/,
-        loader: 'string-replace-loader',
+        loader: 'vdev-string-replace-loader',
         options: {
           search: 'jQuery',
           replace: 'window.$',
@@ -119,10 +120,6 @@ module.exports = {
   }
 }
 ```
-
-## Contributing:
-
-Feel free to open issues to propose stuff and participate. Pull requests are also welcome.
 
 ## Licence:
 
